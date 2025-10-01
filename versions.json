@@ -1,0 +1,7 @@
+{
+    "versions": [
+        { "name": "1.0.0", "url": "https://cdn.optimihost.com/Player2_1.0.0.AppImage" },
+        { "name": "1.1.0", "url": "https://cdn.optimihost.com/Player2_1.1.0.AppImage" },
+        { "name": "2.0.0-beta", "url": "https://cdn.optimihost.com/Player2_2.0.0-beta.AppImage" }
+    ]
+}
