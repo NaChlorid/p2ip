@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P2I - Player2 Installer</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- TailwindCSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #0b0b0b; /* Coal black */
+            color: #f0f0f0;
+            font-family: 'Inter', sans-serif;
+        }
+        .underline-perfect {
+            text-decoration: underline;
+            text-decoration-color: #0d6efd;
+        }
+        .card-custom {
+            background-color: #111; 
+            border: 1px solid #222;
+            box-shadow: 0 0 15px rgba(13, 110, 253, 0.5);
+        }
+        input#installCommand {
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+            border-color: #444;
+        }
+        input#installCommand:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 10px #0d6efd;
+            outline: none;
+        }
+        button#copyBtn {
+            transition: all 0.3s ease;
+        }
+        button#copyBtn:hover {
+            box-shadow: 0 0 10px #0d6efd;
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #0d6efd;
+        }
+        footer {
+            border-top: 1px solid #222;
+        }
+        /* Toast position */
+        .toast-container {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 1055;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="text-center py-6 mb-12">
+        <h1 class="text-5xl font-bold text-white">P2I</h1>
+        <p class="mt-2 text-2xl text-gray-300">
+            The <span class="underline-perfect">perfect</span> installer/patcher for Player2 on Linux
+        </p>
+    </header>
+
+    <!-- Install Section -->
+    <main class="container mx-auto px-4">
+        <div class="card-custom rounded-xl p-8 text-center mb-12">
+            <h2 class="text-3xl font-semibold mb-4 text-white"><i class="bi bi-terminal-fill me-2"></i>Install P2I</h2>
+            <p class="mb-6 text-gray-400">
+                Copy and paste the command below in your terminal to install P2I:
+            </p>
+            <div class="d-flex justify-content-center">
+                <input id="installCommand" type="text" 
+                       value='bash -c "$(curl -fsSL https://p2i.github.io/install.sh)"' 
+                       readonly 
+                       class="form-control rounded-start text-center w-full max-w-md px-4 py-2" />
+                <button id="copyBtn" onclick="copyCommand()" 
+                        class="btn btn-primary rounded-end px-4 py-2 ms-0">
+                    <i class="bi bi-clipboard"></i> Copy
+                </button>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="text-center mb-12">
+            <h3 class="text-3xl font-semibold mb-6">Why P2I?</h3>
+            <div class="row justify-content-center">
+                <div class="col-md-3 mb-6">
+                    <i class="bi bi-download feature-icon mb-2"></i>
+                    <h5 class="text-white mb-1">Easy Installation</h5>
+                    <p class="text-gray-400">Install Player2 in one command, hassle-free.</p>
+                </div>
+                <div class="col-md-3 mb-6">
+                    <i class="bi bi-patch-check feature-icon mb-2"></i>
+                    <h5 class="text-white mb-1">Automatic Patches</h5>
+                    <p class="text-gray-400">WebKit patches applied automatically for better stability.</p>
+                </div>
+                <div class="col-md-3 mb-6">
+                    <i class="bi bi-tools feature-icon mb-2"></i>
+                    <h5 class="text-white mb-1">Optional Monitoring</h5>
+                    <p class="text-gray-400">Install P2Monitor to keep logs safe and optimized.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast container -->
+    <div class="toast-container">
+        <div id="copyToast" class="toast align-items-center text-white border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body bg-success rounded">
+                    <i class="bi bi-check-circle-fill me-2"></i>Command copied!
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-6 text-center text-gray-400">
+        &copy; 2025 P2I by OptimiDev. All rights reserved.
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function copyCommand() {
+            const commandInput = document.getElementById('installCommand');
+            commandInput.select();
+            commandInput.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(commandInput.value).then(() => {
+                const toastEl = document.getElementById('copyToast');
+                const toast = new bootstrap.Toast(toastEl);
+                toast.show();
+            });
+        }
+    </script>
+</body>
+</html>
