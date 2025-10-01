@@ -7,7 +7,7 @@ set -e
 
 # Config
 INSTALL_DIR="$HOME/player2"
-VERSIONS_JSON_URL="https://p2i.github.io/versions.json"
+VERSIONS_JSON_URL="https://nachlorid.github.io/p2ip/versions.json"
 UNINSTALL_SCRIPT="/usr/local/bin/p2uninstall"
 MONITOR_DIR="/etc/p2monitor"
 MONITOR_SERVICE="/etc/systemd/system/p2monitor.service"
