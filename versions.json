@@ -1,7 +1,5 @@
 {
     "versions": [
-        { "name": "1.0.0", "url": "https://cdn.optimihost.com/Player2_1.0.0.AppImage" },
-        { "name": "1.1.0", "url": "https://cdn.optimihost.com/Player2_1.1.0.AppImage" },
-        { "name": "2.0.0-beta", "url": "https://cdn.optimihost.com/Player2_2.0.0-beta.AppImage" }
+        { "name": "0.10.25", "url": "https://cdn.discordapp.com/attachments/1341835366218596403/1410289237735243868/Player2_0.10.25_amd64.AppImage?ex=68e14134&is=68dfefb4&hm=4aed98129fb49e24e9118f6babcd547049eaa34ec6f4799f932afe0c8b6badcb&" }
     ]
 }
