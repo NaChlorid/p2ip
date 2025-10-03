@@ -75,15 +75,22 @@ function select_options() {
 
     CHOICES=$(whiptail --title "Installation Options" \
         --checklist "Select components to install:" 15 60 5 \
-        "${OPTIONS[@]}" 3>&1 1>&2 2>&3) || exit 1
+        "${OPTIONS[@]}" 3>&1 1>&2 2>&3)
+
+    # strip quotes (whiptail surrounds options with ")
+    CHOICES=$(echo $CHOICES | sed 's/"//g')
 
     INSTALL_APP=false
     INSTALL_PATCHES=false
     INSTALL_MONITOR=false
 
-    [[ $CHOICES =~ "Install Player2" ]] && INSTALL_APP=true
-    [[ $CHOICES =~ "Apply WebKit Patches" ]] && INSTALL_PATCHES=true
-    [[ $CHOICES =~ "Install P2Monitor Service" ]] && INSTALL_MONITOR=true
+    for choice in $CHOICES; do
+        case $choice in
+            Install\ Player2) INSTALL_APP=true ;;
+            Apply\ WebKit\ Patches) INSTALL_PATCHES=true ;;
+            Install\ P2Monitor\ Service) INSTALL_MONITOR=true ;;
+        esac
+    done
 }
 
 # ------------------------------
